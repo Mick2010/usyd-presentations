@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementing the Greeter Role - University of Sydney</title>
+    
+    <style>
+        /* University of Sydney Brand Colors */
+        :root {
+            --usyd-ochre: #E64626;
+            --usyd-charcoal: #424242;
+            --usyd-dark-ochre: #C73E23;
+            --usyd-light-grey: #F5F5F5;
+            --usyd-medium-grey: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            color: var(--usyd-charcoal);
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            padding: 60px;
+            border-top: 8px solid var(--usyd-ochre);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease-in-out;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+        }
+
+        .slide h1, .slide h2, .slide h3 {
+            font-family: 'Georgia', 'Times', serif;
+            color: var(--usyd-ochre);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .slide h1 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .slide h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+        }
+
+        .slide h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        /* Title slide styling */
+        .title-slide {
+            background: linear-gradient(135deg, var(--usyd-ochre) 0%, var(--usyd-dark-ochre) 100%);
+            color: white;
+            text-align: center;
+            border-top: none;
+            justify-content: center;
+        }
+
+        .title-slide h1, .title-slide h2, .title-slide h3 {
+            color: white;
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.5em;
+            margin: 30px 0;
+            opacity: 0.9;
+        }
+
+        .title-slide .meta {
+            font-size: 1.2em;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+
+        /* Content styling */
+        ul {
+            margin: 20px 0;
+            padding-left: 30px;
+            font-size: 1.1em;
+        }
+
+        li {
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        ul ul {
+            font-size: 0.9em;
+            color: var(--usyd-medium-grey);
+            margin-top: 10px;
+        }
+
+        /* Emphasis boxes */
+        .emphasis-box {
+            background: var(--usyd-light-grey);
+            border-left: 8px solid var(--usyd-ochre);
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.2em;
+        }
+
+        /* Framework boxes */
+        .framework-box {
+            border: 3px solid var(--usyd-ochre);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            background: rgba(230, 70, 38, 0.05);
+        }
+
+        /* Navigation controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: var(--usyd-ochre);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: var(--usyd-dark-ochre);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--usyd-ochre);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            font-size: 14px;
+        }
+
+        /* Keyboard hint */
+        .keyboard-hint {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+            }
+            .slide h1 { font-size: 2.2em; }
+            .slide h2 { font-size: 2em; }
+            .slide h3 { font-size: 1.5em; }
+            ul { font-size: 1em; }
+            .nav-controls, .slide-counter, .keyboard-hint {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="keyboard-hint">
+        Use ← → arrows or click buttons to navigate
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">8</span>
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next</button>
+        <button class="nav-btn" onclick="window.print()">Print</button>
+    </div>
+
+    <div class="presentation-container">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide title-slide active">
+            <h1>Implementing the Greeter Role</h1>
+            <div class="subtitle">Elevating G12 Front Counter Service</div>
+            <div class="meta">
+                <strong>University of Sydney<br>
+                Shared Service Centre<br>
+                August 2025</strong>
+            </div>
+        </div>
+
+        <!-- Slide 2: Current Service Challenges -->
+        <div class="slide">
+            <h2>Current Service Challenges</h2>
+            <h3>Why Change is Needed</h3>
+            <ul>
+                <li><strong>Customer confusion</strong> about who to approach</li>
+                <li><strong>Deep focus disruption</strong> affects service quality
+                    <ul>
+                        <li>Staff concentrating on complex work requests naturally become less responsive to visitors</li>
+                        <li>Interruptions can cause errors in detailed tasks and require mental reset time</li>
+                    </ul>
+                </li>
+                <li><strong>Follow-up responsibilities</strong> easily forgotten
+                    <ul>
+                        <li>Interview candidates and lost property visitors overlooked when staff return to focused work</li>
+                        <li>No systematic tracking of who has been seated and for how long</li>
+                    </ul>
+                </li>
+                <li><strong>Security protocol gaps</strong> during busy periods</li>
+                <li><strong>Impact on our professional reputation</strong></li>
+            </ul>
+            <div class="emphasis-box">
+                "These challenges create friction for both customers and staff"
+            </div>
+        </div>
+
+        <!-- Slide 3: Professional Services Review -->
+        <div class="slide">
+            <h2>Professional Services Review</h2>
+            <h3>Our Opportunity: Leading Front Counter Excellence in a Digital World</h3>
+            <ul>
+                <li>PSR recognizes professional staff as <strong>"valued mission partners"</strong></li>
+                <li>Digital transformation <strong>increases importance</strong> of quality face-to-face service</li>
+                <li>As services become more automated, <strong>human interaction becomes premium experience</strong></li>
+                <li>Front counter expertise becomes <strong>competitive advantage</strong> for University</li>
+                <li><strong>Career progression</strong> for professionals who excel at human-centered service delivery</li>
+                <li>Operations Leadership emphasis on <strong>service accountability and performance measurement</strong> aligns with PSR excellence goals</li>
+            </ul>
+            <div class="emphasis-box">
+                "Digital capabilities enhance our service - they don't replace our expertise"
+            </div>
+        </div>
+
+        <!-- Slide 4: The Greeter Solution -->
+        <div class="slide">
+            <h2>The Greeter Solution</h2>
+            <h3>"Traffic Controller" Model</h3>
+            <ul>
+                <li><strong>Central positioning with active engagement</strong>
+                    <ul>
+                        <li>Sits centrally, stands to greet and direct visitors</li>
+                        <li>Open body language and eye contact create welcoming environment</li>
+                        <li>Same-level interaction reduces perceived power distance</li>
+                    </ul>
+                </li>
+                <li><strong>Intelligent traffic direction</strong> based on workloads</li>
+                <li><strong>Professional first-point contact</strong> eliminates confusion</li>
+                <li><strong>Protects focused work</strong> whilst maintaining service quality</li>
+                <li><strong>Systematic visitor follow-up</strong> with proper documentation</li>
+                <li><strong>Operational Excellence:</strong> Lost property, mail/packages, PPE distribution</li>
+                <li><strong>End-of-day coordination:</strong> Supply checks, handover notes, facility maintenance</li>
+            </ul>
+            <div class="emphasis-box">
+                Research shows standing and eye contact increase approachability and trust in service environments
+            </div>
+        </div>
+
+        <!-- Slide 5: Professional Standards -->
+        <div class="slide">
+            <h2>Professional Standards for G12 Front Counter</h2>
+            <h3>Creating Excellence Through Consistency</h3>
+            <ul>
+                <li><strong>Communication:</strong> Work-focused coordination during busy periods</li>
+                <li><strong>Device Usage:</strong> Personal phones away from customer areas - we're in a highly visible space where directors, deans, and senior staff regularly pass through</li>
+                <li><strong>Work Focus:</strong> Professional attention during customer interactions demonstrates accountability</li>
+                <li><strong>Team Coordination:</strong> Clear, respectful collaboration builds trust</li>
+                <li><strong>Professional Discretion:</strong> Step away from desk area for personal calls, including work-related calls requiring privacy</li>
+            </ul>
+            <div class="emphasis-box">
+                "Consistent professional standards create the excellence our University community expects"
+            </div>
+        </div>
+
+        <!-- Slide 6: Enhanced Team Coordination -->
+        <div class="slide">
+            <h2>Enhanced Team Coordination</h2>
+            <h3>Working as Professionals</h3>
+            <ul>
+                <li><strong>Morning Coordination:</strong> Brief role assignment discussions</li>
+                <li><strong>Professional Communication:</strong> "Let's focus on this rush, we can catch up at break"</li>
+                <li><strong>Workload Management:</strong> Awareness and mutual support</li>
+                <li><strong>Cultural Sensitivity:</strong> We work in an international environment where smiling and friendly demeanour are universal languages</li>
+                <li><strong>Team Development:</strong> New team dynamics can create friction - professional teams work through differences constructively</li>
+                <li><strong>Conflict Resolution:</strong> Address misunderstandings directly and professionally</li>
+                <li><strong>Positive Intent:</strong> When someone's communication seems different, assume good intentions</li>
+                <li><strong>Professional Boundaries:</strong> Avoid commenting on colleagues' personal matters unless directly relevant</li>
+            </ul>
+            <div class="emphasis-box">
+                "Professional coordination ensures excellent service delivery"
+            </div>
+        </div>
+
+        <!-- Slide 7: Implementation Framework -->
+        <div class="slide">
+            <h2>Implementation Framework</h2>
+            <div class="framework-box">
+                <h3>One-Month Trial Starting September 2nd</h3>
+                <ul>
+                    <li><strong>Trial Period:</strong> One month with evaluation and feedback</li>
+                    <li><strong>Leadership Support:</strong> Raj (HDA) and myself as team leader providing guidance</li>
+                    <li><strong>Daily Flexibility:</strong> Role assignments based on preferences and development needs</li>
+                    <li><strong>Operational Principles:</strong> Central greeter, backup awareness, systematic visitor follow-up</li>
+                    <li><strong>Two-person adaptations:</strong> Maintain heightened greeting awareness while focused on tasks</li>
+                </ul>
+            </div>
+            <div class="emphasis-box">
+                "This trial demonstrates our commitment to front counter innovation"
+            </div>
+        </div>
+
+        <!-- Slide 8: Success Metrics -->
+        <div class="slide">
+            <h2>Success Metrics & Development</h2>
+            <h3>Measuring Our Impact</h3>
+            <div class="framework-box">
+                <ul>
+                    <li><strong>Improved customer satisfaction</strong> and reduced confusion</li>
+                    <li><strong>Enhanced staff focus</strong> and reduced interruptions</li>
+                    <li><strong>Consistent task completion</strong> and security protocols</li>
+                    <li><strong>Individual development opportunities</strong> and career growth</li>
+                </ul>
+                <p style="margin-top: 20px;"><strong>Support Available:</strong> Individual coaching, team discussions, continuous improvement</p>
+            </div>
+            <div class="emphasis-box">
+                "Leading service excellence in the University community"
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'prev');
+                if (i < index) {
+                    slide.classList.add('prev');
+                } else if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+
+            // Update counter
+            document.getElementById('currentSlide').textContent = index + 1;
+            document.getElementById('totalSlides').textContent = totalSlides;
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = (index === 0);
+            document.getElementById('nextBtn').disabled = (index === totalSlides - 1);
+        }
+
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                changeSlide(-1);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                currentSlideIndex = 0;
+                showSlide(currentSlideIndex);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                currentSlideIndex = totalSlides - 1;
+                showSlide(currentSlideIndex);
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].clientX;
+            const difference = startX - endX;
+            
+            if (Math.abs(difference) > 50) { // Minimum swipe distance
+                if (difference > 0) {
+                    changeSlide(1); // Swipe left = next slide
+                } else {
+                    changeSlide(-1); // Swipe right = previous slide
+                }
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
