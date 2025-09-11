@@ -1,236 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jye Rodto - Resume</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 8.5in;
-            margin: 0 auto;
-            padding: 0.5in;
-            line-height: 1.4;
-            color: #333;
-            background: white;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 15px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .name {
-            font-size: 28px;
-            font-weight: bold;
-            color: #2c5aa0;
-            margin-bottom: 5px;
-        }
-        
-        .contact-details {
-            font-size: 11px;
-            color: #666;
-        }
-        
-        .photo-container {
-            width: 120px;
-            height: 150px;
-            border: 1px solid #ddd;
-            margin-left: 20px;
-            overflow: hidden;
-            border-radius: 4px;
-        }
-        
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: #999;
-            text-align: center;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" x="50" text-anchor="middle" dominant-baseline="middle" font-size="8" fill="%23999">Replace with your photo</text></svg>');
-        }
-        
-        .section {
-            margin-bottom: 20px;
-        }
-        
-        .section-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #2c5aa0;
-            border-bottom: 1px solid #2c5aa0;
-            padding-bottom: 3px;
-            margin-bottom: 10px;
-        }
-        
-        .job-title {
-            font-weight: bold;
-            font-style: italic;
-            color: #2c5aa0;
-            margin-bottom: 3px;
-            margin-top: 8px;
-        }
-        
-        .job-title:first-child {
-            margin-top: 0;
-        }
-        
-        ul {
-            margin: 5px 0 10px 0;
-            padding-left: 20px;
-        }
-        
-        li {
-            margin-bottom: 3px;
-            font-size: 11px;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px 20px;
-        }
-        
-        .skills-grid li {
-            list-style: disc;
-        }
-        
-        .text-content {
-            font-size: 11px;
-            text-align: justify;
-        }
-        
-        .education-list, .hobbies-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px 20px;
-        }
-        
-        @media print {
-            body {
-                padding: 0.3in;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <div class="contact-info">
-            <div class="name">Jye Rodto</div>
-            <div class="contact-details">
-                12/8 Brumby Street, Surry Hills, NSW 2042 | 0422 042 714 | jyesmith1@yahoo.com
-            </div>
-        </div>
-        <div class="photo-container">
-            <img src="jye-photo.jpg.PNG" alt="Jye Rodto" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-    </div>
+// University of Sydney R U OK? Day 2025 Presentation Configuration
+// Enhanced Reveal.js setup for mental health awareness presentation
 
-    <div class="section">
-        <div class="section-title">Professional Summary</div>
-        <div class="text-content">
-            Hospitality professional with over 25 years of experience in the service industry, including leadership roles in fine dining, hotel management, and large-scale operations. Proven ability to lead teams, optimise operations, and deliver exceptional customer experiences. Skilled in rostering, staff training, compliance, and enhancing food and beverage offerings. Bilingual (fluent in Thai and English), with excellent communication skills to connect with diverse teams and patrons.
-        </div>
-    </div>
+Reveal.initialize({
+    // Display controls in the bottom right corner
+    controls: true,
+    
+    // Display a presentation progress bar
+    progress: true,
+    
+    // Display the page number of the current slide
+    slideNumber: true,
+    
+    // Add the current slide number to the URL hash
+    hash: true,
+    
+    // Push each slide change to the browser history
+    history: false,
+    
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+    
+    // Overview mode
+    overview: true,
+    
+    // Vertical centering of slides
+    center: false,
+    
+    // Enables touch navigation on devices with touch input
+    touch: true,
+    
+    // Loop the presentation
+    loop: false,
+    
+    // Change the presentation direction to be RTL
+    rtl: false,
+    
+    // Randomizes the order of slides each time the presentation loads
+    shuffle: false,
+    
+    // Turns fragments on and off globally
+    fragments: true,
+    
+    // Flags whether to include the current fragment in the URL
+    fragmentInURL: true,
+    
+    // Flags if the presentation is running in an embedded mode
+    embedded: false,
+    
+    // Flags if we should show a help overlay when the question mark key is pressed
+    help: true,
+    
+    // Flags if speaker notes should be visible to all viewers
+    showNotes: false,
+    
+    // Global override for autoplaying embedded media
+    autoPlayMedia: null,
+    
+    // Global override for preloading lazy-loaded iframes
+    preloadIframes: null,
+    
+    // Auto-slide timing (disabled for discussion-based presentation)
+    autoSlide: 0,
+    
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+    
+    // Auto-slide method
+    autoSlideMethod: null,
+    
+    // Default timing for speaker view
+    defaultTiming: 120, // 2 minutes per slide average
+    
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+    
+    // Apply a 3D roll to links on hover
+    rollingLinks: false,
+    
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+    
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+    
+    // Exposes the reveal.js API through window.postMessage
+    postMessage: true,
+    
+    // Dispatches all reveal.js events to the parent window through postMessage
+    postMessageEvents: false,
+    
+    // Focuses body when page changes visibility
+    focusBodyOnPageVisibilityChange: true,
+    
+    // Transition style - smooth for mental health content
+    transition: 'slide',
+    
+    // Transition speed
+    transitionSpeed: 'default',
+    
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'fade',
+    
+    // PDF export settings
+    pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+    pdfSeparateFragments: true,
+    pdfPageHeightOffset: -1,
+    
+    // View distance
+    viewDistance: 3,
+    mobileViewDistance: 2,
+    
+    // Display mode
+    display: 'block',
+    
+    // Hide cursor settings
+    hideInactiveCursor: true,
+    hideCursorTime: 5000,
+    
+    // Plugin configuration
+    plugins: [ 
+        RevealMarkdown, 
+        RevealHighlight, 
+        RevealNotes 
+    ]
+});
 
-    <div class="section">
-        <div class="section-title">Key Skills</div>
-        <ul class="skills-grid">
-            <li>Team Leadership & Development</li>
-            <li>Hospitality Operations Management</li>
-            <li>Menu Design & Beverage Planning</li>
-            <li>Rostering & Workforce Coordination</li>
-            <li>Stock Control & Minimisation of Wastage</li>
-            <li>Compliance with RSA Standards</li>
-            <li>Customer Service Excellence</li>
-            <li>Communication & Organisational Skills</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Professional Experience</div>
-        
-        <div class="job-title">Assistant Restaurant Manager - Bistro Moncur French Bistro, Sydney (February 2016 – July 2018 & November 2019 – Present)</div>
-        <ul>
-            <li>Oversee daily operations, ensuring high-quality service and customer satisfaction.</li>
-            <li>Manage staffing requirements, including rostering and delivering on-the-job training to build a capable and efficient team.</li>
-            <li>Help update wine and food menus, collaborating as a subject matter expert to align offerings with customer preferences.</li>
-            <li>Supervise and train staff on cash handling procedures, ensuring compliance and accuracy.</li>
-            <li>Maintain compliance with RSA standards, promoting a responsible and safe service environment.</li>
-            <li>Work closely with chefs and senior management to develop and implement new initiatives, including promotions and events.</li>
-            <li>Monitor food and beverage stock levels, implementing measures to reduce wastage and optimise inventory.</li>
-        </ul>
-
-        <div class="job-title">Breakfast Shift Manager - Royce Hotel, Melbourne (July 2018 – November 2019)</div>
-        <ul>
-            <li>Directed breakfast service operations, maintaining a high standard of guest satisfaction.</li>
-            <li>Developed staff schedules and conducted training programs to enhance team performance.</li>
-            <li>Addressed customer complaints promptly and effectively, ensuring positive experiences.</li>
-            <li>Maintained hygiene and operational standards in accordance with regulatory guidelines.</li>
-        </ul>
-
-        <div class="job-title">Waiter - La Scala Italian Bistro, Sydney (July 2015 – July 2016)</div>
-        <ul>
-            <li>Greeted guests and took reservations.</li>
-            <li>Took orders promptly and entered them into the POS system, ensuring efficient course service.</li>
-            <li>Prepared tables for service and performed closing duties.</li>
-            <li>Assisted with meal preparation and kitchen cleaning duties.</li>
-        </ul>
-
-        <div class="job-title">Waiter/Barkeeper - Centennial Hotel, Sydney (April 2012 – October 2014)</div>
-        <ul>
-            <li>Created various cocktails and performed sommelier duties.</li>
-            <li>Greeted and hosted guests, ensuring a welcoming experience.</li>
-            <li>Managed large sections of the floor during peak service times.</li>
-            <li>Performed cleaning duties to maintain a high standard of hygiene.</li>
-        </ul>
-
-        <div class="job-title">Barista/Assistant Manager - Espresso Bar, Pitt Street, Sydney (February 2011 – January 2013)</div>
-        <ul>
-            <li>Prepared coffees and managed coffee orders.</li>
-            <li>Waited tables and made sandwiches for customers.</li>
-            <li>Performed cleaning and closing duties, ensuring the café was ready for the next day.</li>
-        </ul>
-
-        <div class="job-title">Waiter/Head Waiter/Supervisor - Various Cruise Ships (Sun Princess, Emerald Princess, Golden Princess, etc.) (2001 – 2011)</div>
-        <ul>
-            <li>Supervised service teams during breakfast, lunch, and dinner shifts.</li>
-            <li>Delivered pre-shift briefings and staff training to maintain high service standards.</li>
-            <li>Served as a WHS representative, ensuring a safe and clean working environment.</li>
-            <li>Organised entertainment and activities for passengers, enhancing the guest experience.</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Education</div>
-        <ul class="education-list">
-            <li>WSET Level 2 Award in Wines – An internationally recognised qualification exploring wines.</li>
-            <li>Advanced Diploma of Business Management – Kent Institute, Sydney (2015 – 2017)</li>
-            <li>Certificate IV in Hospitality – Allara Learning (Ongoing)</li>
-            <li>Current RSA and RCG Licences</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Hobbies and Interests</div>
-        <ul class="hobbies-list">
-            <li>Cooking and Baking</li>
-            <li>Travel and Language Learning (Fluent in Thai and English)</li>
-            <li>Gardening and DIY Projects</li>
-            <li>Fitness and Team Sports</li>
-        </ul>
-    </div>
-</body>
-</html>
+// Enhanced presentation functionality for R U OK? Day
+document.addEventListener('DOMContentLoaded', function() {
+    // Add R U OK Day specific branding
+    const revealElement = document.querySelector('.reveal');
+    revealElement.setAttribute('data-theme', 'usyd-ruok');
+    revealElement.setAttribute('data-presentation-date', '2025-09-11');
+    
+    // Enhance accessibility for mental health content
+    const slides = document.querySelectorAll('.slides section');
+    slides.forEach((slide, index) => {
+        slide.setAttribute('aria-label', `Slide ${index
