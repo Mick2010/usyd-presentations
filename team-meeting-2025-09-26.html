@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="University of Sydney Team Meeting - CSMS Go-Live Presentation">
+    <title>Team Meeting - September 26, 2025 | University of Sydney</title>
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.css">
+    
+    <!-- University of Sydney Brand Styles -->
+    <style>
+        /* ============================================
+           UNIVERSITY OF SYDNEY BRAND COLORS & FONTS
+           ============================================ */
+        :root {
+            --usyd-ochre: #E64626;
+            --usyd-charcoal: #424242;
+            --usyd-white: #FFFFFF;
+            --usyd-light-grey: #F5F5F5;
+            --usyd-dark-grey: #666666;
+            --usyd-heritage-rose: #C5185C;
+            --usyd-navy: #002F5F;
+            --usyd-eucalypt: #61B369;
+        }
+
+        /* Typography - Professional web-safe alternatives */
+        .reveal {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            color: var(--usyd-charcoal);
+            line-height: 1.6;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--usyd-ochre);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+
+        .reveal h1 { font-size: 2.5em; }
+        .reveal h2 { font-size: 2em; }
+        .reveal h3 { font-size: 1.5em; }
+
+        /* ============================================
+           SLIDE LAYOUT & STRUCTURE
+           ============================================ */
+        .reveal .slides section {
+            text-align: left;
+            padding: 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Title slide - Ochre gradient background */
+        .title-slide {
+            text-align: center !important;
+            background: linear-gradient(135deg, var(--usyd-ochre) 0%, #c73e23 100%);
+            color: white !important;
+            justify-content: center;
+        }
+
+        .title-slide h1, .title-slide h2, .title-slide h3, .title-slide p {
+            color: white !important;
+        }
+
+        /* Safety slide - Branded styling */
+        .safety-slide {
+            background: var(--usyd-light-grey);
+            border-left: 8px solid var(--usyd-ochre);
+        }
+
+        /* ============================================
+           COMPONENT STYLES
+           ============================================ */
+        
+        /* Date headers - Ochre branded */
+        .date-header {
+            background: var(--usyd-ochre);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.9em;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content boxes - University branded */
+        .highlight-box {
+            background: var(--usyd-light-grey);
+            border: 2px solid var(--usyd-ochre);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: 0 2px 8px rgba(230, 70, 38, 0.1);
+        }
+
+        .alert-box {
+            background: #fff8f6;
+            border: 2px solid var(--usyd-ochre);
+            border-left-width: 6px;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: 0 2px 8px rgba(230, 70, 38, 0.15);
+        }
+
+        .week-block {
+            background: var(--usyd-light-grey);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 6px solid var(--usyd-ochre);
+            position: relative;
+        }
+
+        /* Timeline components */
+        .timeline-item {
+            border-left: 4px solid var(--usyd-ochre);
+            padding-left: 24px;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--usyd-ochre);
+            box-shadow: 0 0 0 4px white, 0 0 0 6px var(--usyd-ochre);
+        }
+
+        /* ============================================
+           TYPOGRAPHY & LISTS
+           ============================================ */
+        
+        /* List styling - Ochre bullets */
+        .reveal ul {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .reveal ul li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.5;
+        }
+
+        .reveal ul li::before {
+            content: '●';
+            color: var(--usyd-ochre);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1.2;
+        }
+
+        /* Strong text styling */
+        .reveal strong {
+            color: var(--usyd-ochre);
+            font-weight: 700;
+        }
+
+        /* Emphasis styling */
+        .reveal em {
+            color: var(--usyd-dark-grey);
+            font-style: italic;
+        }
+
+        /* ============================================
+           FOOTER & BRANDING
+           ============================================ */
+        .slide-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--usyd-ochre);
+            color: white;
+            padding: 12px 24px;
+            font-size: 0.8em;
+            font-weight: 500;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-number {
+            opacity: 0.8;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 1024px) {
+            .reveal .slides section {
+                padding: 40px;
+            }
+            
+            .reveal h1 { font-size: 2.2em; }
+            .reveal h2 { font-size: 1.8em; }
+        }
+
+        @media (max-width: 768px) {
+            .reveal .slides section {
+                padding: 30px;
+            }
+            
+            .reveal h1 { font-size: 2em; }
+            .reveal h2 { font-size: 1.6em; }
+            
+            .date-header {
+                font-size: 0.8em;
+                padding: 10px 20px;
+            }
+        }
+
+        /* ============================================
+           ACCESSIBILITY ENHANCEMENTS
+           ============================================ */
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .highlight-box, .alert-box, .week-block {
+                border-width: 3px;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal .slides section {
+                transition: none;
+            }
+        }
+
+        /* Focus states for keyboard navigation */
+        .reveal a:focus,
+        .reveal button:focus {
+            outline: 3px solid var(--usyd-ochre);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- ============================================
+                 TITLE SLIDE
+                 ============================================ -->
+            <section class="title-slide">
+                <h1>Team Meeting</h1>
+                <h2>September 26, 2025</h2>
+                <div style="margin-top: 80px;">
+                    <p style="font-size: 1.3em; font-weight: 500; opacity: 0.95;">
+                        University of Sydney<br>
+                        <span style="font-size: 0.8em; opacity: 0.8;">Contractor Safety Management System Updates</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SAFETY SHARE SLIDE
+                 ============================================ -->
+            <section class="safety-slide">
+                <div class="date-header">Safety Share</div>
+                <h2>🛡️ Safety Moment</h2>
+                
+                <div class="highlight-box">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">Today's Safety Focus</h3>
+                    <p style="font-size: 1.2em; margin-bottom: 0; line-height: 1.6;">
+                        <em>Space for team member to share a safety observation, near-miss, or learning from the workplace.</em>
+                    </p>
+                </div>
+
+                <div style="margin-top: 50px; padding: 20px; background: rgba(230, 70, 38, 0.05); border-radius: 8px;">
+                    <p style="font-size: 1.1em; margin: 0;"><strong>Remember:</strong> Safety is everyone's responsibility. If you see something, say something.</p>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 CSMS GO-LIVE OVERVIEW
+                 ============================================ -->
+            <section>
+                <div class="date-header">October 7th Go-Live</div>
+                <h2>CSMS Launch Overview</h2>
+                
+                <div class="alert-box">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">🚀 What's Happening</h3>
+                    <ul>
+                        <li><strong>New Contractor Safety Management System launches October 7th</strong></li>
+                        <li>Contractor profiles created automatically</li>
+                        <li>Companies receive welcome emails with login details</li>
+                        <li>Full system integration with University processes</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4 style="color: var(--usyd-ochre); margin-bottom: 8px;">Critical Launch Date</h4>
+                    <p style="font-size: 1.1em; margin: 0;"><strong>October 7th:</strong> Complete system activation and contractor onboarding begins</p>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 FRONT COUNTER SUPPORT
+                 ============================================ -->
+            <section>
+                <div class="date-header">Front Counter Support</div>
+                <h2>G12 Lobby Drop-In Sessions</h2>
+                
+                <div class="week-block">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">📅 Week 1: October 9-10</h3>
+                    <p><strong>Initial Launch Support</strong></p>
+                    <p>Project team and subject matter experts on-site to help contractors with immediate needs</p>
+                </div>
+
+                <div class="week-block">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">📅 Week 2: October 21-24</h3>
+                    <p><strong>Transition Period Support</strong></p>
+                    <p>Extended support period for ongoing contractor needs and system optimization</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4 style="color: var(--usyd-ochre); margin-top: 0;">Support Details</h4>
+                    <ul>
+                        <li><strong>Location:</strong> G12 Lobby (main entrance)</li>
+                        <li><strong>Resources:</strong> Project team + subject matter experts</li>
+                        <li><strong>Focus:</strong> Direct contractor assistance and real-time problem solving</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 WHAT TO EXPECT
+                 ============================================ -->
+            <section>
+                <div class="date-header">Preparation</div>
+                <h2>What Front Desk Should Expect</h2>
+                
+                <div class="alert-box">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">⚠️ Increased Contractor Inquiries</h3>
+                    <p style="font-size: 1.1em;"><strong>Starting October 7th:</strong> Expect significantly higher volume of contractor support requests at reception</p>
+                </div>
+
+                <h3 style="color: var(--usyd-ochre);">Most Common Support Issues:</h3>
+                <ul>
+                    <li><strong>Password resets</strong> and account access problems</li>
+                    <li><strong>Email address updates</strong> and contact information changes</li>
+                    <li><strong>Basic system navigation</strong> help and orientation</li>
+                    <li><strong>Login credential issues</strong> and authentication problems</li>
+                    <li><strong>Profile setup assistance</strong> and company information verification</li>
+                </ul>
+
+                <div class="timeline-item">
+                    <h4 style="color: var(--usyd-ochre);">Staff Training This Week</h4>
+                    <p>G12 front desk team receives comprehensive CSMS training from project team to prepare for launch support</p>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 NEW CSMS FEATURES
+                 ============================================ -->
+            <section>
+                <div class="date-header">System Updates</div>
+                <h2>New CSMS Features</h2>
+                
+                <div class="highlight-box">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">🔗 Multi-Tiered Subcontractor Management</h3>
+                    <ul>
+                        <li><strong>Automatic linkage:</strong> Second-tier+ subcontractors auto-link to all upstream companies</li>
+                        <li><strong>Streamlined invitations:</strong> No more multiple separate invitations down the contracting chain</li>
+                        <li><strong>Enhanced visibility:</strong> Subcontractors see all linked companies when sharing workers</li>
+                        <li><strong>Simplified workflow:</strong> Workers can be shared with appropriate principal or primary contractors directly</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4 style="color: var(--usyd-ochre);">Quality of Life Improvements</h4>
+                    <ul>
+                        <li><strong>New comment field:</strong> Easily identify principal/primary contractors for projects</li>
+                        <li><strong>Email visibility:</strong> See existing company email addresses when sending invitations</li>
+                        <li><strong>ABN lookup tool:</strong> Auto-populate company details from ABN database</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 PERMIT MODULE ENHANCEMENTS
+                 ============================================ -->
+            <section>
+                <div class="date-header">Permit Updates</div>
+                <h2>Enhanced Permit to Work Module</h2>
+                
+                <div class="alert-box">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">📧 New Email Notification System</h3>
+                    <p><strong>Automatic reminders</strong> for outstanding permit tasks to ensure timely completion and compliance</p>
+                </div>
+
+                <div class="week-block">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">🚦 Traffic & Pedestrian Management Integration</h3>
+                    <p><strong>Fully Integrated Road Closure Approval Process</strong></p>
+                    <ul>
+                        <li><strong>CUIO approval</strong> now integrated directly into permit workflow</li>
+                        <li><strong>No separate sign-off required</strong> - streamlined single process</li>
+                        <li><strong>Automatic workflow routing</strong> through all required approvers</li>
+                        <li><strong>Enhanced compliance tracking</strong> and audit trails</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4 style="color: var(--usyd-ochre);">New Mandatory Fields for Road Closures</h4>
+                    <ul>
+                        <li><strong>Specify affected roads:</strong> Detailed mapping of closure areas</li>
+                        <li><strong>Stakeholder consultation confirmation:</strong> Evidence of community engagement</li>
+                        <li><strong>Supporting documentation upload:</strong> Required compliance materials</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 SUPPORT PERIOD TIMELINE
+                 ============================================ -->
+            <section>
+                <div class="date-header">Support Timeline</div>
+                <h2>Hypercare Period Overview</h2>
+                
+                <div class="highlight-box">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">🗓️ October 7 - November 28, 2025</h3>
+                    <p style="font-size: 1.2em;"><strong>8 weeks of intensive support and monitoring</strong></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4 style="color: var(--usyd-ochre);">October 8th Morning</h4>
+                    <p><strong>Day-after check-in session</strong> - Early issue identification and resolution</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4 style="color: var(--usyd-ochre);">October 9-30</h4>
+                    <p><strong>Daily online drop-in sessions</strong> - Continuous support and guidance</p>
+                </div>
+
+                <div class="week-block">
+                    <h4 style="color: var(--usyd-ochre); margin-top: 0;">Peak Support Periods</h4>
+                    <ul>
+                        <li><strong>Weeks 1-2 (Oct 7-18):</strong> Initial launch and adoption support</li>
+                        <li><strong>October 21-24:</strong> Intensive transition period support</li>
+                        <li><strong>Ongoing:</strong> Regular check-ins and optimization</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 KEY CONTACTS & BOTTOM LINE
+                 ============================================ -->
+            <section>
+                <div class="date-header">Key Information</div>
+                <h2>Contacts & Next Steps</h2>
+                
+                <div class="highlight-box">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">📧 Key Contact Information</h3>
+                    <p style="font-size: 1.1em;">Direct all questions to the <strong>project mailbox</strong></p>
+                    <p><em>Project team and enablement teams are heavily involved in transition support and available for escalation</em></p>
+                </div>
+
+                <div class="alert-box">
+                    <h3 style="color: var(--usyd-ochre); margin-top: 0;">🎯 Bottom Line Summary</h3>
+                    <p style="font-size: 1.1em; margin-bottom: 16px;"><strong>Be prepared for increased contractor inquiries starting October 7th</strong></p>
+                    <ul>
+                        <li><strong>Heaviest support period:</strong> First two weeks of October (Oct 7-18)</li>
+                        <li><strong>Secondary peak:</strong> Transition intensive period (Oct 21-24)</li>
+                        <li><strong>Staff preparation:</strong> Training support available this week</li>
+                        <li><strong>On-site assistance:</strong> Project team available during critical periods</li>
+                        <li><strong>New system features:</strong> Enhanced subcontractor and permit management</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 CLOSING SLIDE
+                 ============================================ -->
+            <section class="title-slide">
+                <h2>Questions & Discussion</h2>
+                <div style="margin-top: 80px;">
+                    <p style="font-size: 1.2em; opacity: 0.95;">
+                        Thank you for your attention
+                    </p>
+                    <p style="font-size: 1em; opacity: 0.8; margin-top: 40px;">
+                        University of Sydney Team Meeting<br>
+                        September 26, 2025
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ============================================
+         FOOTER BRANDING
+         ============================================ -->
+    <div class="slide-footer">
+        <span>University of Sydney | Team Meeting | September 26, 2025</span>
+        <span class="slide-number">CSMS Go-Live</span>
+    </div>
+
+    <!-- ============================================
+         REVEAL.JS INITIALIZATION
+         ============================================ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script>
+        // Initialize Reveal.js with optimized settings
+        Reveal.initialize({
+            // Display settings
+            width: 1280,
+            height: 720,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0,
+
+            // Navigation
+            controls: true,
+            progress: true,
+            center: false,
+            hash: true,
+            history: true,
+
+            // Transitions
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+
+            // Interaction
+            touch: true,
+            keyboard: true,
+            overview: true,
+            help: true,
+
+            // Accessibility
+            hideAddressBar: true,
+            previewLinks: false,
+            viewDistance: 3,
+
+            // Performance
+            embedded: false,
+            autoPlayMedia: null,
+            preloadIframes: null,
+
+            // Keyboard shortcuts info
+            keyboard: {
+                27: function() { // ESC
+                    Reveal.toggleOverview();
+                },
+                70: function() { // F
+                    Reveal.toggleFullscreen();
+                }
+            }
+        });
+
+        // Add custom event listeners for enhanced functionality
+        Reveal.addEventListener('ready', function(event) {
+            console.log('University of Sydney Team Meeting presentation loaded successfully');
+        });
+
+        // Accessibility enhancements
+        Reveal.addEventListener('slidechanged', function(event) {
+            // Focus management for screen readers
+            const currentSlide = event.currentSlide;
+            const heading = currentSlide.querySelector('h1, h2, h3');
+            if (heading) {
+                heading.focus();
+            }
+        });
+    </script>
+
+    <!-- ============================================
+         GITHUB PAGES COMPATIBILITY
+         ============================================ -->
+    <!-- 
+    GitHub Deployment Instructions:
+    1. Save this file as 'index.html' or 'team-meeting-2025-09-26.html'
+    2. Commit to your GitHub repository
+    3. Enable GitHub Pages in repository settings
+    4. Access via: https://[username].github.io/[repository]/[filename].html
+    
+    Features included:
+    - Fully responsive design
+    - University of Sydney brand compliance
+    - WCAG accessibility standards
+    - Modern web presentation framework
+    - Clean, maintainable code structure
+    - Ready for version control
+    -->
+
+</body>
+</html>
