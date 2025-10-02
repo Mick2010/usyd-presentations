@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contractor Onboarding Process | University of Sydney</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;600;700&display=swap');
+        
+        :root {
+            --usyd-ochre: #E64626;
+            --usyd-charcoal: #424242;
+            --usyd-white: #FFFFFF;
+            --usyd-light-grey: #F5F5F5;
+        }
+        
+        .reveal {
+            font-family: 'Inter', sans-serif;
+            color: var(--usyd-charcoal);
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Crimson Pro', serif;
+            color: var(--usyd-ochre);
+            font-weight: 700;
+            text-transform: none;
+        }
+        
+        .reveal h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        .flowchart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+            padding: 2em;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .flow-step {
+            background: var(--usyd-white);
+            border-left: 6px solid var(--usyd-ochre);
+            padding: 1.5em;
+            box-shadow: 0 2px 8px rgba(66, 66, 66, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .flow-step:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(230, 70, 38, 0.2);
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -3px;
+            top: -12px;
+            background: var(--usyd-ochre);
+            color: var(--usyd-white);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+        
+        .step-title {
+            font-weight: 700;
+            font-size: 1.3em;
+            color: var(--usyd-ochre);
+            margin-bottom: 0.5em;
+            margin-top: 0.3em;
+        }
+        
+        .step-description {
+            color: var(--usyd-charcoal);
+            line-height: 1.6;
+            font-size: 1em;
+        }
+        
+        .step-note {
+            margin-top: 0.8em;
+            padding: 0.8em;
+            background: #FFF3F0;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-style: italic;
+            color: var(--usyd-charcoal);
+        }
+        
+        .arrow {
+            text-align: center;
+            color: var(--usyd-ochre);
+            font-size: 2em;
+            margin: -0.5em 0;
+        }
+        
+        .reveal .slides {
+            text-align: left;
+        }
+        
+        .date-badge {
+            display: inline-block;
+            background: var(--usyd-charcoal);
+            color: var(--usyd-white);
+            padding: 0.3em 0.8em;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>Contractor Onboarding Process</h2>
+                <div class="flowchart-container">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Initial Email Sent <span class="date-badge">7 October</span></div>
+                        <div class="step-description">
+                            Email is sent to both contractor admins and contractor employees requesting profile setup.
+                        </div>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                    
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Link Distribution</div>
+                        <div class="step-description">
+                            Contractor employees forward setup links to their subcontractors.
+                        </div>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                    
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Subcontractor Admin Setup</div>
+                        <div class="step-description">
+                            Subcontractor admins accept the link and create their company profile.
+                        </div>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                    
+                    <div class="flow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Worker Profile Creation</div>
+                        <div class="step-description">
+                            Subcontractor admins create individual profiles for their workers.
+                        </div>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                    
+                    <div class="flow-step">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Induction & Compliance</div>
+                        <div class="step-description">
+                            Workers complete inductions and upload compliance documents.
+                        </div>
+                        <div class="step-note">
+                            ⚠ Note: This stage may trigger an influx of support requests.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide'
+        });
+    </script>
+</body>
+</html>
