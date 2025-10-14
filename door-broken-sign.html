@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Door Sign - Out of Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sign-container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            border: 8px solid #C73B12;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .sign-header {
+            background: #C73B12;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .sign-header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sign-header .icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .sign-body {
+            padding: 40px;
+            text-align: center;
+            background: white;
+        }
+
+        .sign-body h2 {
+            font-size: 2.2em;
+            color: #1A365D;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .sign-body .instruction {
+            font-size: 1.8em;
+            color: #333333;
+            margin-bottom: 25px;
+            padding: 25px;
+            background: #F9E9D9;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .sign-body .status {
+            font-size: 1.3em;
+            color: #666;
+            padding: 20px;
+            background: #F2F2F2;
+            border-left: 5px solid #7BAAA3;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .sign-body .status strong {
+            color: #1A365D;
+        }
+
+        .sign-footer {
+            background: #1A365D;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .arrow {
+            display: inline-block;
+            font-size: 2.5em;
+            color: #C73B12;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .sign-container {
+                max-width: 100%;
+                border: 8px solid #C73B12;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sign-header h1 {
+                font-size: 2em;
+            }
+            .sign-body h2 {
+                font-size: 1.6em;
+            }
+            .sign-body .instruction {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sign-container">
+        <div class="sign-header">
+            <div class="icon">⚠️</div>
+            <h1>Door Broken</h1>
+        </div>
+        
+        <div class="sign-body">
+            <h2>This door is currently out of service</h2>
+            
+            <div class="instruction">
+                <span class="arrow">→</span> Please use the other door <span class="arrow">←</span>
+            </div>
+            
+            <div class="status">
+                <strong>Status:</strong> A work request has been raised and this issue is being addressed. Thank you for your patience.
+            </div>
+        </div>
+        
+        <div class="sign-footer">
+            University of Sydney | Shared Service Centre
+        </div>
+    </div>
+</body>
+</html>
