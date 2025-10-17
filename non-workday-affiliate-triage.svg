@@ -1,0 +1,255 @@
+<svg viewBox="0 0 1400 850" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      /* University of Sydney Brand Colors */
+      .ochre-fill { fill: #E64626; }
+      .charcoal-fill { fill: #424242; }
+      .white-fill { fill: #FFFFFF; }
+      .light-bg { fill: #F5F5F5; }
+      
+      /* Typography */
+      .header-text { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        fill: #FFFFFF;
+      }
+      .body-text { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        fill: #424242;
+      }
+      .small-text { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        fill: #424242;
+      }
+      .link-text {
+        fill: #E64626;
+        text-decoration: underline;
+      }
+      
+      /* Shapes */
+      .decision-box { 
+        fill: #E64626; 
+        stroke: #424242; 
+        stroke-width: 2;
+      }
+      .process-box { 
+        fill: #FFFFFF; 
+        stroke: #424242; 
+        stroke-width: 2;
+      }
+      .end-box { 
+        fill: #F5F5F5; 
+        stroke: #424242; 
+        stroke-width: 2;
+      }
+      .arrow { 
+        stroke: #424242; 
+        stroke-width: 2.5; 
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+      .clickable-box {
+        cursor: pointer;
+      }
+      .clickable-box:hover {
+        opacity: 0.9;
+      }
+    </style>
+    
+    <!-- Arrow marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#424242" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <rect x="20" y="20" width="1360" height="60" class="ochre-fill" rx="5"/>
+  <text x="700" y="58" class="header-text" text-anchor="middle" style="font-size: 22px;">Non-Workday Affiliate Card Triage Guide</text>
+  
+  <!-- Swim Lane Headers -->
+  <rect x="20" y="100" width="260" height="50" class="charcoal-fill" rx="3"/>
+  <text x="150" y="132" class="header-text" text-anchor="middle">INITIAL SCREENING</text>
+  
+  <rect x="300" y="100" width="260" height="50" class="charcoal-fill" rx="3"/>
+  <text x="430" y="132" class="header-text" text-anchor="middle">WORKDAY CHECK</text>
+  
+  <rect x="580" y="100" width="800" height="50" class="charcoal-fill" rx="3"/>
+  <text x="980" y="132" class="header-text" text-anchor="middle">PATHWAY DETERMINATION</text>
+  
+  <!-- Lane backgrounds -->
+  <rect x="20" y="150" width="260" height="630" class="light-bg"/>
+  <rect x="300" y="150" width="260" height="630" class="light-bg"/>
+  <rect x="580" y="150" width="800" height="630" class="light-bg"/>
+  
+  <!-- LANE 1: Initial Screening -->
+  
+  <!-- Start -->
+  <ellipse cx="150" cy="195" rx="70" ry="35" class="ochre-fill"/>
+  <text x="150" y="202" class="header-text" text-anchor="middle">START</text>
+  
+  <!-- Arrow down -->
+  <line x1="150" y1="230" x2="150" y2="260" class="arrow"/>
+  
+  <!-- Q1: ID Check -->
+  <rect x="60" y="260" width="180" height="120" class="decision-box" rx="5"/>
+  <text x="150" y="290" class="header-text" text-anchor="middle">Q1: Do you have:</text>
+  <text x="150" y="315" class="header-text" text-anchor="middle" style="font-size: 14px;">• Staff ID?</text>
+  <text x="150" y="335" class="header-text" text-anchor="middle" style="font-size: 14px;">• Affiliate ID?</text>
+  <text x="150" y="355" class="header-text" text-anchor="middle" style="font-size: 14px;">• Contingent</text>
+  <text x="150" y="372" class="header-text" text-anchor="middle" style="font-size: 14px;">Worker ID?</text>
+  
+  <!-- YES branch -->
+  <line x1="150" y1="380" x2="150" y2="420" class="arrow"/>
+  <text x="165" y="405" class="body-text" style="font-weight: 700;">YES</text>
+  
+  <!-- Staff Intranet box - CLICKABLE -->
+  <a href="https://intranet.sydney.edu.au/services/campus-services/staff-id-cards.html" target="_blank">
+    <rect x="60" y="420" width="180" height="100" class="end-box clickable-box" rx="5"/>
+    <text x="150" y="448" class="body-text" text-anchor="middle" style="font-weight: 700;">Already onboarded</text>
+    <text x="150" y="472" class="body-text" text-anchor="middle">REFER TO:</text>
+    <text x="150" y="492" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">Staff Intranet</text>
+    <text x="150" y="510" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">Staff ID page</text>
+  </a>
+  
+  <!-- END -->
+  <ellipse cx="150" cy="560" rx="50" ry="25" class="charcoal-fill"/>
+  <text x="150" y="567" class="header-text" text-anchor="middle">END</text>
+  
+  <!-- NO branch to next lane -->
+  <line x1="240" y1="320" x2="300" y2="320" class="arrow"/>
+  <text x="265" y="313" class="body-text" style="font-weight: 700;">NO</text>
+  
+  <!-- LANE 2: Workday Check -->
+  
+  <!-- Q2: Workday tasks -->
+  <rect x="320" y="260" width="220" height="110" class="decision-box" rx="5"/>
+  <text x="430" y="290" class="header-text" text-anchor="middle">Q2: Have you been</text>
+  <text x="430" y="312" class="header-text" text-anchor="middle">assigned Workday</text>
+  <text x="430" y="334" class="header-text" text-anchor="middle">tasks?</text>
+  <text x="430" y="358" class="header-text" text-anchor="middle" style="font-size: 13px;">(photo, personal details)</text>
+  
+  <!-- YES branch -->
+  <line x1="430" y1="370" x2="430" y2="410" class="arrow"/>
+  <text x="445" y="395" class="body-text" style="font-weight: 700;">YES</text>
+  
+  <!-- Contact sponsor box -->
+  <rect x="320" y="410" width="220" height="120" class="end-box" rx="5"/>
+  <text x="430" y="440" class="body-text" text-anchor="middle" style="font-weight: 700;">You are in Workday</text>
+  <text x="430" y="462" class="body-text" text-anchor="middle">(Contingent Worker</text>
+  <text x="430" y="482" class="body-text" text-anchor="middle">or Affiliate)</text>
+  <text x="430" y="508" class="body-text" text-anchor="middle" style="font-weight: 700;">→ Contact sponsor/HR</text>
+  
+  <!-- END -->
+  <ellipse cx="430" cy="570" rx="50" ry="25" class="charcoal-fill"/>
+  <text x="430" y="577" class="header-text" text-anchor="middle">END</text>
+  
+  <!-- NO branch to next lane -->
+  <line x1="540" y1="315" x2="580" y2="315" class="arrow"/>
+  <text x="555" y="308" class="body-text" style="font-weight: 700;">NO</text>
+  
+  <!-- LANE 3: Pathway Determination -->
+  
+  <!-- Q3: Work type -->
+  <rect x="680" y="260" width="200" height="80" class="decision-box" rx="5"/>
+  <text x="780" y="292" class="header-text" text-anchor="middle">Q3: Type of work?</text>
+  
+  <!-- Arrows to 4 pathways -->
+  <line x1="780" y1="340" x2="780" y2="370" class="arrow"/>
+  
+  <!-- Horizontal distribution line -->
+  <line x1="680" y1="370" x2="1280" y2="370" stroke="#424242" stroke-width="2.5"/>
+  
+  <!-- Split into 4 branches -->
+  <line x1="720" y1="370" x2="720" y2="400" class="arrow"/>
+  <line x1="880" y1="370" x2="880" y2="400" class="arrow"/>
+  <line x1="1040" y1="370" x2="1040" y2="400" class="arrow"/>
+  <line x1="1200" y1="370" x2="1200" y2="400" class="arrow"/>
+  
+  <!-- PATHWAY 1: Academic/Research - CLICKABLE -->
+  <rect x="620" y="400" width="200" height="110" class="process-box" rx="5"/>
+  <text x="720" y="428" class="body-text" text-anchor="middle" style="font-weight: 700;">Academic/Research</text>
+  <text x="720" y="453" class="small-text" text-anchor="middle">(teaching, supervision,</text>
+  <text x="720" y="473" class="small-text" text-anchor="middle">research output)</text>
+  
+  <line x1="720" y1="510" x2="720" y2="540" class="arrow"/>
+  
+  <a href="https://sydneyuni.service-now.com/sm?id=kb_article_view&sysparm_article=KB0030676" target="_blank">
+    <rect x="620" y="540" width="200" height="90" class="end-box clickable-box" rx="5"/>
+    <text x="720" y="567" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">KB0030676</text>
+    <text x="720" y="590" class="small-text" text-anchor="middle">(Log into Service Portal</text>
+    <text x="720" y="608" class="small-text" text-anchor="middle">& search KB number)</text>
+  </a>
+  
+  <ellipse cx="720" cy="665" rx="45" ry="23" class="charcoal-fill"/>
+  <text x="720" y="672" class="header-text" text-anchor="middle" style="font-size: 14px;">END</text>
+  
+  <!-- PATHWAY 2: Employment -->
+  <rect x="840" y="400" width="200" height="90" class="process-box" rx="5"/>
+  <text x="940" y="428" class="body-text" text-anchor="middle" style="font-weight: 700;">Employment eligible</text>
+  <text x="940" y="450" class="body-text" text-anchor="middle" style="font-weight: 700;">or being</text>
+  <text x="940" y="472" class="body-text" text-anchor="middle" style="font-weight: 700;">considered?</text>
+  
+  <line x1="940" y1="490" x2="940" y2="520" class="arrow"/>
+  
+  <rect x="840" y="520" width="200" height="70" class="end-box" rx="5"/>
+  <text x="940" y="550" class="body-text" text-anchor="middle" style="font-weight: 700;">HR/Workday</text>
+  <text x="940" y="572" class="body-text" text-anchor="middle" style="font-weight: 700;">onboarding</text>
+  
+  <ellipse cx="940" cy="625" rx="45" ry="23" class="charcoal-fill"/>
+  <text x="940" y="632" class="header-text" text-anchor="middle" style="font-size: 14px;">END</text>
+  
+  <!-- PATHWAY 3: Short-term -->
+  <rect x="1060" y="400" width="200" height="80" class="process-box" rx="5"/>
+  <text x="1160" y="428" class="body-text" text-anchor="middle" style="font-weight: 700;">Short-term</text>
+  <text x="1160" y="450" class="body-text" text-anchor="middle" style="font-weight: 700;">access only</text>
+  <text x="1160" y="472" class="body-text" text-anchor="middle" style="font-weight: 700;">(<3 months)</text>
+  
+  <line x1="1160" y1="480" x2="1160" y2="510" class="arrow"/>
+  
+  <!-- CLICKABLE Visitor Card / Building Access -->
+  <a href="https://intranet.sydney.edu.au/services/campus-services/building-access.html" target="_blank">
+    <rect x="1060" y="510" width="200" height="70" class="end-box clickable-box" rx="5"/>
+    <text x="1160" y="540" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">Visitor Card</text>
+    <text x="1160" y="562" class="small-text" text-anchor="middle">→ See Building Access page</text>
+  </a>
+  
+  <ellipse cx="1160" cy="615" rx="45" ry="23" class="charcoal-fill"/>
+  <text x="1160" y="622" class="header-text" text-anchor="middle" style="font-size: 14px;">END</text>
+  
+  <!-- PATHWAY 4: Admin/Support (Non-Workday Affiliate) -->
+  <rect x="1280" y="400" width="280" height="165" class="process-box" rx="5"/>
+  <text x="1420" y="426" class="body-text" text-anchor="middle" style="font-weight: 700;">Admin/Support Work</text>
+  <text x="1420" y="450" class="body-text" text-anchor="middle" style="font-weight: 700;">Requirements:</text>
+  <text x="1420" y="473" class="small-text" text-anchor="middle">✓ Employed by external company</text>
+  <text x="1420" y="491" class="small-text" text-anchor="middle">✓ Need building access</text>
+  <text x="1420" y="509" class="small-text" text-anchor="middle">✓ Need printing/library access</text>
+  <text x="1420" y="527" class="small-text" text-anchor="middle">✓ Duration >3 months</text>
+  <text x="1420" y="549" class="small-text" text-anchor="middle" style="font-style: italic;">Examples: EA, admin support, contractors</text>
+  
+  <line x1="1420" y1="565" x2="1420" y2="595" class="arrow"/>
+  
+  <!-- CLICKABLE Library card application -->
+  <a href="https://library.sydney.edu.au/about/library-membership/honorary-academic-title-holder-membership" target="_blank">
+    <rect x="1280" y="595" width="280" height="110" class="end-box clickable-box" rx="5"/>
+    <text x="1420" y="620" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">AFFILIATES & CONFERRED</text>
+    <text x="1420" y="640" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">ACADEMIC TITLE HOLDERS</text>
+    <text x="1420" y="660" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">CARD APPLICATION</text>
+    <text x="1420" y="683" class="small-text" text-anchor="middle">Category: Administrative/Support staff</text>
+  </a>
+  
+  <ellipse cx="1420" cy="740" rx="60" ry="25" class="charcoal-fill"/>
+  <text x="1420" y="745" class="header-text" text-anchor="middle" style="font-size: 13px;">See 5-step</text>
+  <text x="1420" y="762" class="header-text" text-anchor="middle" style="font-size: 13px;">flowchart</text>
+  
+  <!-- Footer note -->
+  <rect x="20" y="800" width="1360" height="45" class="light-bg" stroke="#424242" stroke-width="2" rx="3"/>
+  <text x="35" y="827" class="body-text" style="font-weight: 700;">KEY POLICY NOTES:</text>
+  <text x="185" y="827" class="small-text">University card ≠ Building access (two separate processes required)</text>
+  <text x="750" y="827" class="small-text">Workday affiliates/contingent workers NOT eligible for non-Workday affiliate cards</text>
+</svg>
