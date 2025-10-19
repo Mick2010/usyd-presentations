@@ -57,9 +57,6 @@
       .clickable-box {
         cursor: pointer;
       }
-      .clickable-box:hover {
-        opacity: 0.9;
-      }
     </style>
     
     <!-- Arrow marker -->
@@ -109,7 +106,7 @@
   <text x="165" y="405" class="body-text" style="font-weight: 700;">YES</text>
   
   <!-- Staff Intranet box - CLICKABLE -->
-  <a href="https://intranet.sydney.edu.au/services/campus-services/staff-id-cards.html" target="_blank">
+  <a href="https://intranet.sydney.edu.au/services/campus-services/staff-id-cards.html">
     <rect x="60" y="420" width="180" height="100" class="end-box clickable-box" rx="5"/>
     <text x="150" y="448" class="body-text" text-anchor="middle" style="font-weight: 700;">Already onboarded</text>
     <text x="150" y="472" class="body-text" text-anchor="middle">REFER TO:</text>
@@ -179,7 +176,7 @@
   
   <line x1="720" y1="510" x2="720" y2="540" class="arrow"/>
   
-  <a href="https://sydneyuni.service-now.com/sm?id=kb_article_view&sysparm_article=KB0030676" target="_blank">
+  <a href="https://sydneyuni.service-now.com/sm?id=kb_article_view&sysparm_article=KB0030676">
     <rect x="620" y="540" width="200" height="90" class="end-box clickable-box" rx="5"/>
     <text x="720" y="567" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">KB0030676</text>
     <text x="720" y="590" class="small-text" text-anchor="middle">(Log into Service Portal</text>
@@ -204,7 +201,7 @@
   <ellipse cx="940" cy="625" rx="45" ry="23" class="charcoal-fill"/>
   <text x="940" y="632" class="header-text" text-anchor="middle" style="font-size: 14px;">END</text>
   
-  <!-- PATHWAY 3: Short-term -->
+  <!-- PATHWAY 3: Short-term - CLICKABLE -->
   <rect x="1060" y="400" width="200" height="80" class="process-box" rx="5"/>
   <text x="1160" y="428" class="body-text" text-anchor="middle" style="font-weight: 700;">Short-term</text>
   <text x="1160" y="450" class="body-text" text-anchor="middle" style="font-weight: 700;">access only</text>
@@ -212,8 +209,7 @@
   
   <line x1="1160" y1="480" x2="1160" y2="510" class="arrow"/>
   
-  <!-- CLICKABLE Visitor Card / Building Access -->
-  <a href="https://intranet.sydney.edu.au/services/campus-services/building-access.html" target="_blank">
+  <a href="https://intranet.sydney.edu.au/services/campus-services/building-access.html">
     <rect x="1060" y="510" width="200" height="70" class="end-box clickable-box" rx="5"/>
     <text x="1160" y="540" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">Visitor Card</text>
     <text x="1160" y="562" class="small-text" text-anchor="middle">→ See Building Access page</text>
@@ -235,7 +231,7 @@
   <line x1="1420" y1="565" x2="1420" y2="595" class="arrow"/>
   
   <!-- CLICKABLE Library card application -->
-  <a href="https://library.sydney.edu.au/about/library-membership/honorary-academic-title-holder-membership" target="_blank">
+  <a href="https://library.sydney.edu.au/about/library-membership/honorary-academic-title-holder-membership">
     <rect x="1280" y="595" width="280" height="110" class="end-box clickable-box" rx="5"/>
     <text x="1420" y="620" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">AFFILIATES & CONFERRED</text>
     <text x="1420" y="640" class="body-text link-text" text-anchor="middle" style="font-weight: 700;">ACADEMIC TITLE HOLDERS</text>
